@@ -31,7 +31,7 @@ public class Customer {
   private String outstandingamt;
   private String phone;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   @JoinColumn(name = "agentcode", nullable = false)
   @JsonIgnoreProperties("agents")
   private Agent agent;
