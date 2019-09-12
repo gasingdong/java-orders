@@ -42,6 +42,7 @@ public class Customer {
   private Agent agent;
 
   @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+  @JsonIgnoreProperties("customer")
   private List<Order> orders = new ArrayList<>();
 
   public Customer(String custname, String custcity, String workingarea, String custcountry,

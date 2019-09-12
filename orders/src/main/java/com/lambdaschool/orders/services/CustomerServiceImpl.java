@@ -2,6 +2,7 @@ package com.lambdaschool.orders.services;
 
 import com.lambdaschool.orders.models.Customer;
 import com.lambdaschool.orders.repos.CustomersRepository;
+import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,9 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public List<Customer> findAll() {
-    return null;
+    List<Customer> results = new ArrayList<>();
+    custrepos.findAll().forEach(results::add);
+    return results;
   }
 
   @Override
