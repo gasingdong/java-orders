@@ -26,7 +26,7 @@ public class Order {
   @JsonIgnoreProperties("customers")
   private Customer customer;
 
-  public Order(double ordamount, double advanceamount, String orddescription, Customer customer) {
+  public Order(double ordamount, double advanceamount, Customer customer, String orddescription) {
     this.ordamount = ordamount;
     this.advanceamount = advanceamount;
     this.orddescription = orddescription;

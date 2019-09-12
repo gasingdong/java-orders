@@ -30,9 +30,10 @@ public class Customer {
   private String workingarea;
   private String custcountry;
   private String grade;
-  private String openingamt;
-  private String receiveamt;
-  private String outstandingamt;
+  private double openingamt;
+  private double receiveamt;
+  private double paymentamt;
+  private double outstandingamt;
   private String phone;
 
   @ManyToOne
@@ -44,8 +45,8 @@ public class Customer {
   private List<Order> orders = new ArrayList<>();
 
   public Customer(String custname, String custcity, String workingarea, String custcountry,
-      String grade, String openingamt, String receiveamt, String outstandingamt,
-      String phone, Agent agent, List<Order> orders) {
+      String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt,
+      String phone, Agent agent) {
     this.custname = custname;
     this.custcity = custcity;
     this.workingarea = workingarea;
@@ -53,10 +54,10 @@ public class Customer {
     this.grade = grade;
     this.openingamt = openingamt;
     this.receiveamt = receiveamt;
+    this.paymentamt = paymentamt;
     this.outstandingamt = outstandingamt;
     this.phone = phone;
     this.agent = agent;
-    this.orders = orders;
   }
 
   public Customer() {
@@ -110,27 +111,35 @@ public class Customer {
     this.grade = grade;
   }
 
-  public String getOpeningamt() {
+  public double getOpeningamt() {
     return openingamt;
   }
 
-  public void setOpeningamt(String openingamt) {
+  public void setOpeningamt(double openingamt) {
     this.openingamt = openingamt;
   }
 
-  public String getReceiveamt() {
+  public double getReceiveamt() {
     return receiveamt;
   }
 
-  public void setReceiveamt(String receiveamt) {
+  public void setReceiveamt(double receiveamt) {
     this.receiveamt = receiveamt;
   }
 
-  public String getOutstandingamt() {
+  public double getPaymentamt() {
+    return paymentamt;
+  }
+
+  public void setPaymentamt(double paymentamt) {
+    this.paymentamt = paymentamt;
+  }
+
+  public double getOutstandingamt() {
     return outstandingamt;
   }
 
-  public void setOutstandingamt(String outstandingamt) {
+  public void setOutstandingamt(double outstandingamt) {
     this.outstandingamt = outstandingamt;
   }
 

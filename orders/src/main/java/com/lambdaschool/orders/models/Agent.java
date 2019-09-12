@@ -31,13 +31,12 @@ public class Agent {
   private List<Customer> customers = new ArrayList<>();
 
   public Agent(String agentname, String workingarea, double commission, String phone,
-      String country, List<Customer> customers) {
+      String country) {
     this.agentname = agentname;
     this.workingarea = workingarea;
     this.commission = commission;
     this.phone = phone;
     this.country = country;
-    this.customers = customers;
   }
 
   public Agent() {
