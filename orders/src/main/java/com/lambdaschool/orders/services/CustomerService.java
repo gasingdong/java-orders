@@ -7,7 +7,7 @@ public interface CustomerService {
 
   List<Customer> findAll();
 
-  Customer findCustomerByName();
+  Customer findCustomerByName(String name);
 
   Customer add(Customer customer);
 
