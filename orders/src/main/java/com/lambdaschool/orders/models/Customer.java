@@ -1,6 +1,9 @@
 package com.lambdaschool.orders.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -36,9 +40,12 @@ public class Customer {
   @JsonIgnoreProperties("agents")
   private Agent agent;
 
+  @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<Order> orders = new ArrayList<>();
+
   public Customer(String custname, String custcity, String workingarea, String custcountry,
       String grade, String openingamt, String receiveamt, String outstandingamt,
-      String phone, Agent agent) {
+      String phone, Agent agent, List<Order> orders) {
     this.custname = custname;
     this.custcity = custcity;
     this.workingarea = workingarea;
@@ -49,6 +56,7 @@ public class Customer {
     this.outstandingamt = outstandingamt;
     this.phone = phone;
     this.agent = agent;
+    this.orders = orders;
   }
 
   public Customer() {
@@ -140,5 +148,13 @@ public class Customer {
 
   public void setAgent(Agent agent) {
     this.agent = agent;
+  }
+
+  public List<Order> getOrders() {
+    return orders;
+  }
+
+  public void setOrders(List<Order> orders) {
+    this.orders = orders;
   }
 }
