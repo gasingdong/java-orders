@@ -1,5 +1,6 @@
 package com.lambdaschool.orders.services;
 
+import com.lambdaschool.orders.models.Agent;
 import com.lambdaschool.orders.models.Customer;
 import com.lambdaschool.orders.models.Order;
 import com.lambdaschool.orders.repos.CustomersRepository;
@@ -35,6 +36,7 @@ public class CustomerServiceImpl implements CustomerService {
     return result;
   }
 
+  @Transactional
   @Override
   public Customer add(Customer customer) {
     Customer newCustomer = new Customer();
@@ -65,8 +67,68 @@ public class CustomerServiceImpl implements CustomerService {
 
   }
 
+  @Transactional
   @Override
-  public Customer update(Customer customer) {
-    return null;
+  public Customer update(Customer customer, long id) {
+    Customer currentCustomer = custrepos.findById(id)
+        .orElseThrow(() -> new EntityNotFoundException(Long.toString(id)));
+
+    String custname = customer.getCustname();
+    Agent agent = customer.getAgent();
+    String custcity = customer.getCustcity();
+    String custcountry = customer.getCustcountry();
+    String grade = customer.getGrade();
+    String workingarea = customer.getWorkingarea();
+    String phone = customer.getPhone();
+    Double openingamt = customer.getOpeningamt();
+    Double receiveamt = customer.getReceiveamt();
+    Double paymentamt = customer.getPaymentamt();
+    Double outstandingamt = customer.getOutstandingamt();
+
+    if (custname != null) {
+      currentCustomer.setCustname(custname);
+    }
+
+    if (agent != null) {
+      currentCustomer.setAgent(agent);
+    }
+
+    if (custcity != null) {
+      currentCustomer.setCustcity(custcity);
+    }
+
+    if (custcountry != null) {
+      currentCustomer.setCustcountry(custcountry);
+    }
+
+    if (grade != null) {
+      currentCustomer.setGrade(grade);
+    }
+
+    if (workingarea != null) {
+      currentCustomer.setWorkingarea(workingarea);
+    }
+
+    if (phone != null) {
+      currentCustomer.setPhone(phone);
+    }
+
+    if (openingamt != null) {
+      currentCustomer.setOpeningamt(openingamt);
+    }
+
+    if (receiveamt != null) {
+      currentCustomer.setReceiveamt(receiveamt);
+    }
+
+    if (paymentamt != null) {
+      currentCustomer.setPaymentamt(paymentamt);
+    }
+
+    if (outstandingamt != null) {
+      currentCustomer.setOutstandingamt(outstandingamt);
+    }
+
+    return custrepos.save(currentCustomer);
   }
 }

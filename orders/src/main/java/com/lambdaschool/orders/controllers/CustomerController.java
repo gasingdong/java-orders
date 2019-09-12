@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,5 +45,11 @@ public class CustomerController {
     URI newCustomerURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{custname}").buildAndExpand(newCustomer.getCustname()).toUri();
     responseHeaders.setLocation(newCustomerURI);
     return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
+  }
+
+  @PutMapping(value = "/{custcode}", consumes = {"application/json"}, produces = {"application/json"})
+  public ResponseEntity<?> updateCustomer(@Valid @RequestBody Customer customer, @PathVariable long custcode) {
+    customerService.update(customer, custcode);
+    return new ResponseEntity<>(HttpStatus.OK);
   }
 }

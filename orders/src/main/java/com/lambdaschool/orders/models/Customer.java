@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,10 +29,10 @@ public class Customer {
   private String workingarea;
   private String custcountry;
   private String grade;
-  private double openingamt;
-  private double receiveamt;
-  private double paymentamt;
-  private double outstandingamt;
+  private Double openingamt;
+  private Double receiveamt;
+  private Double paymentamt;
+  private Double outstandingamt;
   private String phone;
 
   @ManyToOne
@@ -46,7 +45,7 @@ public class Customer {
   private List<Order> orders = new ArrayList<>();
 
   public Customer(String custname, String custcity, String workingarea, String custcountry,
-      String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt,
+      String grade, Double openingamt, Double receiveamt, Double paymentamt, Double outstandingamt,
       String phone, Agent agent) {
     this.custname = custname;
     this.custcity = custcity;
@@ -112,35 +111,35 @@ public class Customer {
     this.grade = grade;
   }
 
-  public double getOpeningamt() {
+  public Double getOpeningamt() {
     return openingamt;
   }
 
-  public void setOpeningamt(double openingamt) {
+  public void setOpeningamt(Double openingamt) {
     this.openingamt = openingamt;
   }
 
-  public double getReceiveamt() {
+  public Double getReceiveamt() {
     return receiveamt;
   }
 
-  public void setReceiveamt(double receiveamt) {
+  public void setReceiveamt(Double receiveamt) {
     this.receiveamt = receiveamt;
   }
 
-  public double getPaymentamt() {
+  public Double getPaymentamt() {
     return paymentamt;
   }
 
-  public void setPaymentamt(double paymentamt) {
+  public void setPaymentamt(Double paymentamt) {
     this.paymentamt = paymentamt;
   }
 
-  public double getOutstandingamt() {
+  public Double getOutstandingamt() {
     return outstandingamt;
   }
 
-  public void setOutstandingamt(double outstandingamt) {
+  public void setOutstandingamt(Double outstandingamt) {
     this.outstandingamt = outstandingamt;
   }
 
